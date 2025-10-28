@@ -28,11 +28,6 @@ Developed as a **Junior Full-Stack Developer assignment**, demonstrating backend
 | transactionDate  | DateTime     | When the transaction occurred        |
 | category         | Text         | Category name (e.g., Food, Bills)    |
 
-### Setup
-   ```bash
-   npm install
-   npm run develop
-   ```
 ### Setup & Run
 1. Install dependencies:
    ```bash

@@ -1,35 +1,68 @@
-# Credit Transactions Dashboard
+# 💳 Credit Transactions Dashboard
 
-This project is a **Full-Stack Junior Developer assignment** that simulates a credit card transactions management system.  
-It consists of a **Strapi backend** and a **Next.js frontend** connected to display transactions.
+A full-stack system for managing and analyzing credit card transactions.  
+Developed as a **Junior Full-Stack Developer assignment**, demonstrating backend modeling, API integration, and dynamic UI rendering.
 
 ---
 
-## Backend (Strapi)
+##  Tech Stack
 
-### Content-Type: `Transaction`
-- **description**: short text
-- **amount**: decimal number
-- **type**: enumeration (`Debit` or `Credit`)
-- **transactionDate**: datetime
-- **category**: text (e.g., Food, Utilities)
+| Layer      | Technology                        |
+|-----------|-----------------------------------|
+| Backend   | Strapi (SQLite default)            |
+| Frontend  | Next.js 13+ with TypeScript        |
+| Styling   | Tailwind CSS                       |
+| Data Fetching | SWR (client-side auto-refresh) |
 
+---
+
+##  Backend (Strapi)
+
+**Content-Type:** `Transaction`
+
+| Field            | Type          | Description                         |
+|-----------------|--------------|-------------------------------------|
+| description      | Text         | Short description of the transaction |
+| amount           | Decimal      | Transaction value                    |
+| type             | Enum         | `Credit` / `Debit`                   |
+| transactionDate  | DateTime     | When the transaction occurred        |
+| category         | Text         | Category name (e.g., Food, Bills)    |
+
+### Setup
+   ```bash
+   npm install
+   npm run develop
+   ```
 ### Setup & Run
-
 1. Install dependencies:
    ```bash
    npm install
-
 2. Start Strapi server:
-     npm run develop
-
-3. Access the admin panel at http://localhost:1337/admin
-
-4. Make sure Public role has permission to find transactions
+   ```bash
+   npm run develop
+3. Open admin panel→ http://localhost:1337/admin
+4. Add sample data
+5. Make sure Public role has permission to find transactions
 
 ### Frontend (Next.js)
 - **Pages**
    **Dashboard (app/page.tsx)** – fetches transactions from Strapi and displays them in a table.
+
+## Data Fetching & Technologies
+  - Data Fetching
+  - Uses Next.js App Router with `fetch` and `cache: "no-store"` for real-time server-side fetching.
+  - Defensive coding ensures the UI won't crash if some fields are missing.
+
+- **Technologies**
+  - **Backend:** Strapi (SQLite by default)
+  - **Frontend:** Next.js 13+ with TypeScript
+  - **Styling:** Minimal UI, color highlights for credit (+) and debit (-)
+  - **Data Flow:** Real-time sync between backend and frontend
+
+- **Notes**
+  - The dashboard updates immediately when transactions are added or edited.
+  - Code is modular and clearly commented (in English).
+  - Demonstrates Full-Stack concepts: data modeling, API consumption, filtering, summarizing, and UI logic.
 
 - **Features**
   **Transaction Table**: lists all transactions with columns for Description, Amount, Type, Date, Category
@@ -42,27 +75,62 @@ It consists of a **Strapi backend** and a **Next.js frontend** connected to disp
   1. Install dependencies:
       ```bash
       npm install
-  2. Start development server:
+
+  2. Create an environment configuration file:
+      ```bash
+     echo "NEXT_PUBLIC_STRAPI_URL=http://localhost:1337" > .env.local
+
+  3. Start development server:
       ```bash
       npm run dev
-  3. Open 
+
+  4. Open 
      ```bash
      http://localhost:3000
 
-- **Data Fetching**
-  * Uses Next.js App Router with fetch and cache: "no-store" for server-side data fetching.
-  * Handles missing attributes safely to prevent crashes.
+- **UI Features**
+  * **Transaction Table** displaying:
+  * Description, Amount, Date, Category, Type
+  * **Color Indicators:**
+     - 🟢 Credit (income)
+     - 🔴 Debit (expense)
+  * **Balance Summary:** total credits − total debits
+  * **Filtering:** show All / Only Credit / Only Debit
+  * **Sorting:** newest ↔ oldest
+  * **Automatic refresh** using SWR (no manual reload needed)
 
-- **Technologies**
-   * **Backend**: Strapi (SQLite by default)
-   * **Frontend**: Next.js 13+ with TypeScript
-   * **Styling**: minimal UI, visual cues for amounts (red/green)
-   * **Data Fetching**: Server-side
-  
-- **Notes**
-  * The dashboard updates immediately when transactions are added or modified in Strapi.
-  * All code is modular, clean, and commented in English.
-  * Demonstrates basic Full-Stack skills: modeling data, connecting frontend to backend, filtering, and calculating summaries.
+- **Architecture Decisions**
+  **Data Fetching Strategy — Why SWR?**
+ SWR was used to:
+ * Automatically revalidate data when Strapi changes
+ * Avoid manual refresh while keeping UI responsive
+ * Cache results efficiently on the client
+ This approach fits a dashboard where data updates reflect **in real time**.
+
+- **Component Structure**
+ app/page.tsx               → Page layout and state control
+ components/TransactionTable → Displays transactions
+ components/BalanceSummary   → Computes and shows total balance
+ components/FilterButtons    → UI for filtering by type
+ lib/getTransactions.ts      → Centralized API logic
+ types/transaction.ts        → Strong typing for data safety
+
+- **Error/Edge Handling**
+  * Missing fields are handled gracefully
+  * Invalid amounts fallback to 0
+  * Empty state and loading indicators included
+
+- **Future Enhancements (Optional)**
+   * Category-based filtering
+   * Charts and monthly summaries
+   * Authentication and user-specific history
+   * Pagination for large datasets
 
 
-    
+Author <br>
+Tamar Mizrachi <br>
+Full-Stack Developer <br>
+📧 Email: t0583279405@gmail.com <br>
+💻 GitHub: https://github.com/tamar-mizrachi <br>
+
+

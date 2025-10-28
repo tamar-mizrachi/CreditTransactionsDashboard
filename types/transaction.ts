@@ -3,7 +3,7 @@ export interface Transaction {
   id: number;
   description: string;
   amount: number;
-  type: "Debit" | "Credit";
+  type: "Debit" | "Credit"| "Undefined";
   transactionDate: string;
   category: string;
 }

@@ -40,10 +40,14 @@ It consists of a **Strapi backend** and a **Next.js frontend** connected to disp
 
 - **Setup & Run**
   1. Install dependencies:
+      ```bash
       npm install
   2. Start development server:
-     npm run dev
-  3. Open http://localhost:3000
+      ```bash
+      npm run dev
+  3. Open 
+     ```bash
+     http://localhost:3000
 
 - **Data Fetching**
   * Uses Next.js App Router with fetch and cache: "no-store" for server-side data fetching.

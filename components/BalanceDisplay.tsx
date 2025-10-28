@@ -1,15 +1,22 @@
 interface BalanceProps {
-    balance: number;
-  }
-  
-  export default function BalanceDisplay({ balance }: BalanceProps) {
-    return (
-      <h2 className="text-xl font-semibold mb-6 text-center">
-        Current Balance:{" "}
-        <span className={balance >= 0 ? "text-green-600" : "text-red-600"}>
-          {balance >= 0 ? "+" : "-"}${Math.abs(balance).toFixed(2)}
+  balance: number;
+}
+
+/**
+ * Displays the current account balance with color coding
+ * Green for positive, red for negative
+ */
+export default function BalanceDisplay({ balance }: BalanceProps) {
+  const isPositive = balance >= 0;
+
+  return (
+    <div className="text-center mb-8 p-6 bg-white rounded-xl shadow-md">
+      <p className="text-sm text-gray-500 mb-1">Current Balance</p>
+      <p className="text-3xl font-bold">
+        <span className={isPositive ? "text-green-600" : "text-red-600"}>
+          {isPositive ? "+" : "-"}₪{Math.abs(balance).toFixed(2)}
         </span>
-      </h2>
-    );
-  }
-  
+      </p>
+    </div>
+  );
+}

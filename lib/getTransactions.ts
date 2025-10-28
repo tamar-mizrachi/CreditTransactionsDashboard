@@ -4,9 +4,8 @@ import { API_BASE_URL } from "./config";
 const EMPTY_STRING = "-";
 const UNDEFINED_TYPE = "Undefined";
 
-/**
- * Fetch transactions from Strapi with error handling
- */
+// Fetch transactions from Strapi with error handling
+
 export async function getTransactions(): Promise<Transaction[]> {
   try {
     const response = await fetch(`${API_BASE_URL}/transactions`, {

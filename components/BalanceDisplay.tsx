@@ -2,10 +2,11 @@ interface BalanceProps {
   balance: number;
 }
 
-/**
- * Displays the current account balance with color coding
- * Green for positive, red for negative
+/*
+  * Displays the current account balance with color coding
+  * Green for positive, red for negative
  */
+
 export default function BalanceDisplay({ balance }: BalanceProps) {
   const isPositive = balance >= 0;
 

@@ -7,9 +7,9 @@ interface Props {
   setSortOrder: React.Dispatch<React.SetStateAction<"asc" | "desc">>;
 }
 
-/**
- * Toggle button for sorting transactions by date
- */
+
+// Toggle button for sorting transactions by date
+
 export default function SortButtons({ sortOrder, setSortOrder }: Props) {
   return (
     <button

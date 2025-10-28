@@ -4,7 +4,6 @@ interface Props {
   transactions: Transaction[];
 }
 
-// פונקציה נפרדת לפורמט תאריך + שעה
 function formatTransactionDate(dateStr?: string): string {
   if (!dateStr) return "-";
 

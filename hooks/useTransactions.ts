@@ -5,9 +5,8 @@ import { getTransactions } from "../lib/getTransactions";
 import { REFRESH_INTERVAL } from "../lib/config";
 import { Transaction } from "../types/transaction";
 
-/*
- * Custom hook to fetch and manage transactions with SWR
- */
+// Custom hook to fetch and manage transactions with SWR
+
 export function useTransactions() {
   const { data: transactions = [], error, isLoading } = useSWR<Transaction[]>(
     "transactions",

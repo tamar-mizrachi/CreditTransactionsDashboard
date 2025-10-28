@@ -8,8 +8,8 @@ import TransactionTable from "./TransactionTable";
 import { useTransactions } from "../hooks/useTransactions";
 
 /*
- * Main dashboard component that displays and manages credit card transactions
- * Features: filtering, sorting, real-time updates, error handling
+  * Main dashboard component that displays and manages credit card transactions
+  * Features: filtering, sorting, real-time updates, error handling
  */
 export default function TransactionDashboard() {
   const [filter, setFilter] = React.useState<"All" | "Credit" | "Debit">("All");

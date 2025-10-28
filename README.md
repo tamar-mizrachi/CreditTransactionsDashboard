@@ -108,12 +108,15 @@ Developed as a **Junior Full-Stack Developer assignment**, demonstrating backend
  This approach fits a dashboard where data updates reflect **in real time**.
 
 - **Component Structure**
- app/page.tsx               → Page layout and state control
- components/TransactionTable → Displays transactions
- components/BalanceSummary   → Computes and shows total balance
- components/FilterButtons    → UI for filtering by type
- lib/getTransactions.ts      → Centralized API logic
- types/transaction.ts        → Strong typing for data safety
+  
+   app/page.tsx               → Page layout and state control <br>
+   components/TransactionTable → Displays transactions <br>
+   components/BalanceSummary   → Computes and shows total balance <br>
+   components/FilterButtons    → UI for filtering by type <br>
+   hooks/useTransactions.ts    → Custom hook for fetching, filtering, and auto-refresh (if used) <br>
+  lib/getTransactions.ts      → Centralized API logic <br>
+  types/transaction.ts        → Strong typing for data safety<br>
+  lib/config.ts               → Centralized configuration (API_BASE_URL, REFRESH_INTERVAL)<br>
 
 - **Error/Edge Handling**
   * Missing fields are handled gracefully
